@@ -1,0 +1,7 @@
+.profile-para {
+  border: 1px green solid;
+
+  .avatar {
+    border: 2px red solid;
+  }
+}

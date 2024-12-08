@@ -1,5 +1,8 @@
 import { hydrateRoot } from "react-dom/client";
 
 import App from "./client/App";
-
-hydrateRoot(document.getElementById("app"), <App data={window?.__data__} />);
+console.log("render entry client");
+hydrateRoot(
+  document.getElementById("app"),
+  <App stats={window?.__data__?.stats} profile={window?.__data__?.profile} />
+);

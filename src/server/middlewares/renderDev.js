@@ -11,13 +11,14 @@ export function renderDev(vite) {
       );
       const { render } = await vite.ssrLoadModule("/src/entry-server.jsx");
 
-      const script = `<script>window.__data__=${JSON.stringify(
-        req.data
-      )}</script>`;
+      const script = `<script>window.__data__=${JSON.stringify({
+        stats: req.data,
+        profile: req.user.profile,
+      })}</script>`;
 
       const html = template.replace(
         `<!--outlet-->`,
-        `${render(req.data)} ${script}`
+        `${render(req.data, req.user.profile)} ${script}`
       );
       res.status(200).set({ "Content-Type": "text/html" }).end(html);
     } catch (error) {
