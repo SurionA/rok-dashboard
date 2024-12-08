@@ -1,0 +1,13 @@
+services:
+  rok-dashboard:
+    image: node:22
+    # container_name: rok-dashboard
+    user: node
+    working_dir: /app
+    env_file: .env
+    volumes:
+      - ./:/app
+    ports:
+      - 3500:3500
+      - 24678:24678
+    command: npm run dev
